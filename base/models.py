@@ -10,4 +10,4 @@ class Room(models.Model):
     created = models.DateTimeField(auto_now_add=True) # will save it for the first save
     
     def __str__(self) -> str:
-        return str(self.name)
+        return self.name
