@@ -11,8 +11,15 @@ rooms = [
 
 
 def home(request):
-    return render(request, 'home.html', {'rooms': rooms})
+    context = {'rooms': rooms}
+    return render(request, 'base/home.html', context)
     # The templates folder is searched for home.html
 
-def room(request):
-    return render(request, 'rooms.html')
+def room(request, pk):
+    room = None
+    for i in rooms:
+        if i['id'] == int(pk):
+            room = i
+    context = {'room': room}
+    
+    return render(request, 'base/rooms.html', context)
