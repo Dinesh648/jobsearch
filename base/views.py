@@ -2,12 +2,12 @@ from django.shortcuts import render
 from .models import Room
 # Create your views here.
 
-rooms = [
-    {'id':1, 'name':'Find an organization'},
-    {'id':2, 'name':'Get a referral'},
-    {'id':3, 'name':'Find a job opening'},
-    {'id':4, 'name':'Get your resume reviewed'}
-]
+# rooms = [
+#     {'id':1, 'name':'Find an Referral'},
+#     {'id':2, 'name':'Get a referral'},
+#     {'id':3, 'name':'Find a job opening'},
+#     {'id':4, 'name':'Get your resume reviewed'}
+# ]
 
 
 def home(request):
@@ -17,10 +17,7 @@ def home(request):
     # The templates folder is searched for home.html
 
 def room(request, pk):
-    room = None
-    for i in rooms:
-        if i['id'] == int(pk):
-            room = i
+    room = Room.objects.get(id=pk)
     context = {'room': room}
     
     return render(request, 'base/rooms.html', context)
