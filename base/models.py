@@ -44,6 +44,10 @@ class JobReferrals(models.Model):
     referral_Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     job_Id = models.ForeignKey(JobOpenings, on_delete=models.CASCADE, related_name='job_referrals')
     user_Id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='job_referrals')
+    
+    def __str__(self):
+        return str(self.referral_Id)
+    
 
 class Room(models.Model):
     #host #topic #participants
